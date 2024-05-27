@@ -1,11 +1,22 @@
 import LoginBox from '@/components/auth/LoginBox'
 import RegisterBox from '@/components/auth/RegisterBox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { auth } from '@/firebase/firebase.config'
 import { Lock } from 'lucide-react'
+import { useEffect } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const [user] = useAuthState(auth)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  },[navigate,user])
   return (
-    <main className='grid place-items-center h-screen w-screen'>
+    <main className='flex justify-center items-center pt-16'>
       <section>
         <div className='flex justify-center'>
           <div className='flex gap-2 items-center pb-8 font-bold'>

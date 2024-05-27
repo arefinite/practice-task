@@ -1,7 +1,20 @@
 import { DashboardLayout, RootLayout } from '@/layouts'
-import { About, Cart, Error, Login, Products, Home, Contact } from '@/pages'
+import {
+  About,
+  Cart,
+  Error,
+  Login,
+  Products,
+  Home,
+  Contact,
+  Profile,
+  ManageProducts,
+  AddProduct,
+} from '@/pages'
+import Dashboard from '@/pages/Dashboard'
 
 import { createBrowserRouter } from 'react-router-dom'
+import PrivateRoutes from './PrivateRoutes'
 
 export const appRouter = createBrowserRouter([
   {
@@ -29,14 +42,36 @@ export const appRouter = createBrowserRouter([
         path: 'contact',
         element: <Contact />,
       },
+      {
+        path: 'login',
+        element: <Login />,
+      },
     ],
   },
   {
-    path: '/dashboard',
-    element: <DashboardLayout />,
-  },
-  {
-    path: 'login',
-    element: <Login />,
+    path: 'dashboard',
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout />
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'manage-product',
+        element: <ManageProducts />,
+      },
+      {
+        path: 'add-product',
+        element: <AddProduct />,
+      },
+    ],
   },
 ])

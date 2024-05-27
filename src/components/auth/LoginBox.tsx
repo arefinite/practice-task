@@ -1,4 +1,30 @@
+import { auth } from '@/firebase/firebase.config'
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from 'react-firebase-hooks/auth'
+import { User } from './RegisterBox'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
 const LoginBox = () => {
+  const navigate = useNavigate()
+  const [signInWithGoogle] = useSignInWithGoogle(auth)
+  const [signInWithEmailAndPassword, , , error] =
+    useSignInWithEmailAndPassword(auth)
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+  }
+  const { register, handleSubmit } = useForm<User>()
+
+  const handleEmailSignIn: SubmitHandler<User> = async user => {
+   const success = await signInWithEmailAndPassword(user.email, user.password)
+    if (success) {
+      navigate('/')
+    }
+    
+  }
+
   return (
     <main>
       <div className='col-span-2 grid items-start gap-6 lg:col-span-1'>
@@ -23,7 +49,10 @@ const LoginBox = () => {
                   </svg>
                   Github
                 </button>
-                <button className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'>
+                <button
+                  onClick={handleGoogleSignIn}
+                  className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'
+                >
                   <svg role='img' viewBox='0 0 24 24' className='mr-2 h-4 w-4'>
                     <path
                       fill='currentColor'
@@ -43,38 +72,47 @@ const LoginBox = () => {
                   </span>
                 </div>
               </div>
-              <div className='grid gap-2'>
-                <label
-                  className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
-                  htmlFor='email'
-                >
-                  Email
-                </label>
-                <input
-                  className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
-                  id='email'
-                  placeholder='m@example.com'
-                  type='email'
-                />
-              </div>
-              <div className='grid gap-2'>
-                <label
-                  className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
-                  htmlFor='password'
-                >
-                  Password
-                </label>
-                <input
-                  className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
-                  id='password'
-                  type='password'
-                />
-              </div>
-            </div>
-            <div className='flex items-center p-6 pt-0'>
-              <button className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full'>
-                Login
-              </button>
+
+              <form onSubmit={handleSubmit(handleEmailSignIn)}>
+                <div className='grid gap-2'>
+                  <label
+                    className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+                    htmlFor='email'
+                  >
+                    Email
+                  </label>
+                  <input
+                    className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+                    id='email'
+                    placeholder='m@example.com'
+                    type='email'
+                    {...register('email')}
+                  />
+                </div>
+                <div className='grid gap-2 mt-4'>
+                  <label
+                    className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+                    htmlFor='password'
+                  >
+                    Password
+                  </label>
+                  <input
+                    className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+                    id='password'
+                    type='password'
+                    {...register('password')}
+                  />
+                </div>
+                <p className='mt-4 text-red-500'>{error && error?.message}</p>
+                <div className='flex items-center mt-4 pt-0'>
+                  <button
+                    role='submit'
+                    className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full'
+                  >
+                    Login
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

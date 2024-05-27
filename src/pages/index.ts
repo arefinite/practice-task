@@ -5,4 +5,6 @@ export { default as Contact } from './Contact'
 export { default as Products } from './Products'
 export { default as Cart } from './Cart'
 export { default as Error } from './Error'
-
+export { default as Profile } from './Profile'
+export { default as ManageProducts } from './ManageProducts'
+export { default as AddProduct } from './AddProduct'
