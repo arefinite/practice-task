@@ -1,6 +1,15 @@
 import { navs } from '@/utlis/navs'
-import { ShoppingBasket } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { Menu, ShoppingBasket } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  
+  SheetTrigger,
+} from '../ui/sheet'
 
 const Navbar = () => {
   return (
@@ -8,15 +17,40 @@ const Navbar = () => {
       <section className='flex justify-between center'>
         <div className='flex gap-2 items-center'>
           <ShoppingBasket size={30} color='blue' />
-          <h1 className='text-2xl font-bold'>Shopping App</h1>
+          <h1 className='text-2xl font-bold'>
+            <Link to='/'>Shopping App</Link>
+          </h1>
         </div>
-        <ul className='flex gap-6'>
+        <ul className='gap-6 hidden md:flex'>
           {navs.map((nav, i) => (
             <li key={i}>
               <NavLink to={nav.href}>{nav.label}</NavLink>
             </li>
           ))}
         </ul>
+        {/* Mobile navigation */}
+        <div className='md:hidden'>
+          <Sheet>
+            <SheetTrigger>
+              <Menu />
+            </SheetTrigger>
+            <SheetContent className='w-[250px]'>
+              <SheetHeader>
+                <SheetDescription>
+                  <ul className='gap-2 mt-4 text-left flex-col flex'>
+                    {navs.map((nav, i) => (
+                      <NavLink to={nav.href}>
+                        <SheetClose asChild>
+                          <li key={i}>{nav.label}</li>
+                        </SheetClose>
+                      </NavLink>
+                    ))}
+                  </ul>
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
+        </div>
       </section>
     </nav>
   )

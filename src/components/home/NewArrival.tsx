@@ -18,7 +18,7 @@ const NewArrival = () => {
         <h2 className='text-2xl font-bold'>New Arrivals in Our Collection</h2>
      
       </div>
-      <section className='grid grid-cols-4 gap-4 py-10'>
+      <section className='grid grid-cols-1 md:grid-cols-4 gap-4 py-10'>
         {products.map((product, index) => (
           <Card key={index}>
             <CardHeader>

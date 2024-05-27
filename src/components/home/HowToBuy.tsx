@@ -6,7 +6,7 @@ const HowToBuy = () => {
     <div className='flex flex-col items-center gap-4'>
       <h2 className='text-2xl font-bold'>How to Buy from us</h2>
     </div>
-    <div className="flex justify-between py-10">
+    <div className="flex flex-col gap-4 md:flex-row justify-between py-10">
         <div className="flex-1">
           <img src={Buy} alt="" />
       </div>

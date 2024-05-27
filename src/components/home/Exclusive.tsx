@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const Exclusive = () => {
   return (
-    <section className='py-8'>
+    <section className='center py-8'>
       <div className='flex flex-col items-center gap-4'>
         <h2 className='text-2xl font-bold'>Exclusive Discount (upto <span className="text-red-500">50%</span>)</h2>
       </div>

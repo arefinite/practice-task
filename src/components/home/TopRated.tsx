@@ -15,7 +15,7 @@ const TopRated = () => {
       <div className='flex flex-col items-center gap-4'>
         <h2 className='text-2xl font-bold'>Top Rated Products</h2>
       </div>
-      <section className='grid grid-cols-4 gap-4 py-10'>
+      <section className='grid grid-cols-1 md:grid-cols-4 gap-4 py-10'>
         {products.map((product, index) => (
           <Card key={index}>
             <CardHeader>

@@ -16,7 +16,7 @@ const Login = () => {
     }
   },[navigate,user])
   return (
-    <main className='flex justify-center items-center pt-16'>
+    <main className='center md:flex md:justify-center md:items-center pt-16'>
       <section>
         <div className='flex justify-center'>
           <div className='flex gap-2 items-center pb-8 font-bold'>
@@ -26,7 +26,7 @@ const Login = () => {
             </span>
           </div>
         </div>
-        <Tabs defaultValue='login' className='w-[400px]'>
+        <Tabs defaultValue='login' className='w-full md:w-[400]'>
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='login'>Login</TabsTrigger>
             <TabsTrigger value='registration'>Registration</TabsTrigger>

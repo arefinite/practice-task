@@ -19,11 +19,11 @@ const Header = () => {
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <Key color='red' />
-            <span className='text-xl font-bold'>Admin Dashboard</span>
+            <span className='text-lg md:text-2xl tracking-tighter font-bold'>Admin Dashboard</span>
           </div>
-          <div className='text-right'>
+          <div className='text-right  hidden md:block'>
             <div>Welcome Admin</div>
-            <div>
+            <div >
               {date} | {time}
             </div>
           </div>

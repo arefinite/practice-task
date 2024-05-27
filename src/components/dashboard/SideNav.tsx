@@ -18,7 +18,7 @@ const SideNav = () => {
         <ul className='space-y-4'>
           <li className='flex gap-2'>
             <CircleGauge />
-            <NavLink to='dashboard'>Dashboard</NavLink>
+            <NavLink to='/dashboard'>Dashboard</NavLink>
           </li>
           <li className='flex gap-2'>
             <FolderKanban />

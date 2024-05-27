@@ -25,18 +25,18 @@ const Categories = () => {
     <section className='py-8'>
       <div className='flex flex-col items-center gap-4'>
         <h2 className='text-2xl font-bold'>Top Categories</h2>
-        <ul className='flex gap-4 py-10'>
+        <ul className='flex gap-4 py-10 flex-wrap'>
           {categories.map((category, index) => (
             <li
               key={index}
-              className='border border-gray-200 rounded-md px-4 py-2 my-2 cursor-pointer'
+              className='border border-gray-200 rounded-md p-2  cursor-pointer'
             >
               {category.slice(0, 1).toUpperCase() + category.slice(1)}
             </li>
           ))}
         </ul>
       </div>
-      <section className='grid grid-cols-4 gap-4'>
+      <section className='grid grid-cols-1 md:grid-cols-4 gap-4'>
         {products.map((product, index) => (
           <Card key={index}>
             <CardHeader>
