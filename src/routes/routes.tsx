@@ -65,7 +65,7 @@ export const appRouter = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: 'manage-product',
+        path: 'manage-products',
         element: <ManageProducts />,
       },
       {

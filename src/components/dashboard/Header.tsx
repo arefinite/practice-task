@@ -1,7 +1,10 @@
+import { auth } from '@/firebase/firebase.config'
 import { Key } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Header = () => {
+  const [user] = useAuthState(auth)
   const [time, setTime] = useState(new Date().toLocaleTimeString())
   const date = new Date().toDateString()
   useEffect(() => {
@@ -22,7 +25,7 @@ const Header = () => {
             <span className='text-lg md:text-2xl tracking-tighter font-bold'>Admin Dashboard</span>
           </div>
           <div className='text-right  hidden md:block'>
-            <div>Welcome Admin</div>
+            <div>Welcome {user?.displayName}</div>
             <div >
               {date} | {time}
             </div>

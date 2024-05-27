@@ -10,7 +10,7 @@ const DashboardLayout = () => {
         <div>
           <SideNav />
         </div>
-        <div>
+        <div className='flex-1'>
           <Outlet />
         </div>
       </div>
