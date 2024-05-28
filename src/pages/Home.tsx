@@ -26,7 +26,7 @@ const Home = () => {
       .sort((a: Product, b: Product) => (b?.discount || 0) - (a?.discount || 0))
       .slice(0, 10)
 
-  const newArrival = hasProduct && products.reverse().slice(0, 10)
+  const newArrival = hasProduct && products.reverse().slice(0,10)
 
   const topRated =
     hasProduct &&
