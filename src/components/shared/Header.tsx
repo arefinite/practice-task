@@ -11,10 +11,11 @@ const Header = () => {
   const handleSignOut = async () => {
     await signOut()
   }
+  
   return (
     <header className='center py-4 flex justify-end'>
       <div className='flex gap-2 items-center'>
-        {user?.email ? (
+        {user ? (
           <div className='flex flex-col md:flex-row gap-4'>
             <div className='flex items-center gap-2 justify-end'>
             <Avatar>

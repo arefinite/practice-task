@@ -1,6 +1,7 @@
 import { auth } from '@/firebase/firebase.config'
 import {
   useSignInWithEmailAndPassword,
+  useSignInWithGithub,
   useSignInWithGoogle,
 } from 'react-firebase-hooks/auth'
 import { User } from './RegisterBox'
@@ -10,10 +11,15 @@ import { useNavigate } from 'react-router-dom'
 const LoginBox = () => {
   const navigate = useNavigate()
   const [signInWithGoogle] = useSignInWithGoogle(auth)
+  const [signInWithGithub,,,gitError] = useSignInWithGithub(auth);
+
   const [signInWithEmailAndPassword, , , error] =
     useSignInWithEmailAndPassword(auth)
   const handleGoogleSignIn = () => {
     signInWithGoogle()
+  }
+  const handleGitHubSignIn = () => {
+    signInWithGithub()
   }
   const { register, handleSubmit } = useForm<User>()
 
@@ -40,7 +46,7 @@ const LoginBox = () => {
             </div>
             <div className='p-6 pt-0 grid gap-4'>
               <div className='grid grid-cols-2 gap-6'>
-                <button className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'>
+                <button onClick={handleGitHubSignIn} className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'>
                   <svg viewBox='0 0 438.549 438.549' className='mr-2 h-4 w-4'>
                     <path
                       fill='currentColor'
@@ -104,6 +110,7 @@ const LoginBox = () => {
                   />
                 </div>
                 <p className='mt-4 text-red-500'>{error && error?.message}</p>
+                <p className='mt-4 text-red-500'>{gitError && gitError?.message}</p>
                 <div className='flex items-center mt-4 pt-0'>
                   <button
                     role='submit'

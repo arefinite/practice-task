@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Profile = () => {
   const [user] = useAuthState(auth)
-  console.log(user)
+  
   return (
     <main>
       <h1 className='text-xl font-bold my-8'>User Information</h1>
@@ -21,7 +21,7 @@ const Profile = () => {
         </div>
         <div>
           <p>Name: {user?.displayName}</p>
-          <p>Email: {user?.email}</p>
+          <p>Email: {user?.email ?? 'N/A'}</p>
         </div>
       </Card>
     </main>
