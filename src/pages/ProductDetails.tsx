@@ -75,8 +75,11 @@ const ProductDetails = () => {
           </div>
           <div>Sold Amount: {product.soldAmount} units</div>
           
+          <div>
+            <p className='font-bold'>Product Description</p>
+            <p>{product.description}</p>
+          </div>
             <Button className='mt-4'>Add to Cart</Button>
-          
         </CardContent>
       </Card>
     </main>
