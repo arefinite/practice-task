@@ -39,7 +39,7 @@ const Navbar = () => {
                 <SheetDescription>
                   <ul className='gap-2 mt-4 text-left flex-col flex'>
                     {navs.map((nav, i) => (
-                      <NavLink to={nav.href}>
+                      <NavLink to={nav.href} key={i}>
                         <SheetClose asChild>
                           <li key={i}>{nav.label}</li>
                         </SheetClose>

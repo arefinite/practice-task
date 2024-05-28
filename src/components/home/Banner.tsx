@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
 import Shopping from '/shopping.svg'
 const Banner = () => {
@@ -14,7 +15,7 @@ const Banner = () => {
           break the bank. Don't miss out on these exclusive discounts—shop.
           Hurry, these deals won't last long!
         </p>
-        <Button>Shop Now</Button>
+        <Button><Link to='products'>Shop Now</Link></Button>
       </div>
       <div className='flex-1 order-1 md:order-2'>
         {' '}

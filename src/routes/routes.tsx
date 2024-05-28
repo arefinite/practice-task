@@ -10,6 +10,7 @@ import {
   Profile,
   ManageProducts,
   AddProduct,
+  ProductDetails,
 } from '@/pages'
 import Dashboard from '@/pages/Dashboard'
 
@@ -29,6 +30,10 @@ export const appRouter = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+      },
+      {
+        path: 'product/:id',
+        element: <ProductDetails/>
       },
       {
         path: 'cart',

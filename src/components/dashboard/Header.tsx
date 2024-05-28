@@ -2,6 +2,7 @@ import { auth } from '@/firebase/firebase.config'
 import { Key } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const [user] = useAuthState(auth)
@@ -22,11 +23,13 @@ const Header = () => {
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
             <Key color='red' />
-            <span className='text-lg md:text-2xl tracking-tighter font-bold'>Admin Dashboard</span>
+            <span className='text-lg md:text-2xl tracking-tighter font-bold'>
+              <Link to='/dashboard'>Admin Dashboard</Link>
+            </span>
           </div>
           <div className='text-right  hidden md:block'>
             <div>Welcome {user?.displayName}</div>
-            <div >
+            <div>
               {date} | {time}
             </div>
           </div>

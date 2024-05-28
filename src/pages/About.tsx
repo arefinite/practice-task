@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div>About</div>
+    <main className="center my-8">This is about page</main>
   )
 }
 export default About
