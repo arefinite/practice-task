@@ -29,9 +29,7 @@ const ManageProducts = () => {
     if (confirmation) {
       deleteProduct()
       toast('Product Deleted Successfully')
-    } else {
-      console.log('not deleted')
-    }
+    } 
   }
   console.log(id)
 
@@ -78,7 +76,9 @@ const ManageProducts = () => {
                 <TableCell>{product.price}</TableCell>
 
                 <TableCell className='text-right space-x-2'>
-                  <Button variant='secondary'>Update</Button>
+                  <Button variant='secondary'>
+                    <Link to={`/dashboard/update-product/${product.id}`}>Update</Link>
+                  </Button>
                   <Button
                     variant='destructive'
                     onClick={() => handleDelete(product.id!)}

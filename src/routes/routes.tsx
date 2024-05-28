@@ -33,7 +33,7 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: 'product/:id',
-        element: <ProductDetails/>
+        element: <ProductDetails />,
       },
       {
         path: 'cart',
@@ -62,7 +62,7 @@ export const appRouter = createBrowserRouter([
     ),
     children: [
       {
-        index:true,
+        index: true,
         element: <Dashboard />,
       },
       {
@@ -75,6 +75,10 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: 'add-product',
+        element: <AddProduct />,
+      },
+      {
+        path: 'update-product/:id',
         element: <AddProduct />,
       },
     ],

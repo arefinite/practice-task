@@ -19,3 +19,7 @@ export const addProduct = async (product: Product) => {
 export const deleteProduct = async (id:string) => {
   await apiClient.delete(`${baseURL}/products/${id}`)
 }
+
+export const updateProduct = async (id: string, product: Product) => {
+  await apiClient.put(`${baseURL}/products/${id}`,product)
+}
